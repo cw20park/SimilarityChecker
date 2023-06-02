@@ -1,10 +1,12 @@
 #include <string>
 
 using namespace std;
+#define MAX_LENGTH_CHECK_POINT 60
 
 class SimilarityChecker
 {
 public:
+
 	int checkLength(string A, string B)
 	{
 		if (isLengthZero(A, B))
@@ -12,7 +14,7 @@ public:
 
 		int gap = calculateGap(A, B);
 		if (gap == 0)
-			return 60;
+			return MAX_LENGTH_CHECK_POINT;
 		if (gap < 0)
 		{
 			swap(A, B);
@@ -22,7 +24,7 @@ public:
 		if (isMoreThanTwice(A.length(), B.length()))
 			return 0;
 
-		return 1 * 60 - gap * 60 / B.length();
+		return 1 * MAX_LENGTH_CHECK_POINT - gap * MAX_LENGTH_CHECK_POINT / B.length();
 	}
 
 private:

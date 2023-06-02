@@ -9,7 +9,7 @@ public:
 
 TEST_F(SimilarityCheckerFixture, sameLength) {
 
-	EXPECT_EQ(60, similarityChecker.checkLength("ASD", "DSA"));
+	EXPECT_EQ(MAX_LENGTH_CHECK_POINT, similarityChecker.checkLength("ASD", "DSA"));
 }
 
 TEST_F(SimilarityCheckerFixture, diffLength1) {
