@@ -3,6 +3,7 @@
 using namespace std;
 #define MAX_LENGTH_CHECK_POINT (60)
 #define MAX_ALPHABET (26)
+#define MAX_ALPHABET_CHECK_POINT (40)
 
 class SimilarityChecker
 {
@@ -31,15 +32,38 @@ public:
 		int totalCount = 0;
 		int sameCount = 0;
 
+		if (checkCapitalLetter(A, B) == false)
+			return 0;
+
 		initTotalAlphabetFlag();
 		setTotalAlphabetFlag(A);
 		setTotalAlphabetFlag(B);
 		totalCount = countTotalAlphabetFlag();
 		sameCount = calculateSameCount(A, B);
 
-		return sameCount * 40 / totalCount;
+		return sameCount * MAX_ALPHABET_CHECK_POINT / totalCount;
 	}
 private:
+	bool checkCapitalLetter(string A, string B)
+	{
+		for(int i=0;i <A.length(); i++)
+		{
+			if (isCapitalLetter(A[i]) == false)
+				return false;
+		}
+		for (int i = 0; i < B.length(); i++)
+		{
+			if (isCapitalLetter(B[i]) == false)
+				return false;
+		}
+		return true;
+	}
+	bool isCapitalLetter(char c)
+	{
+		if ('A' <= c && c <= 'Z')
+			return true;
+		return false;
+	}
 	bool isLengthZero(string A, string B)
 	{
 		if (A.length() == 0 || B.length() == 0)
@@ -126,5 +150,5 @@ private:
 		return false;
 	}
 
-	int totalAlphabetFlag[26] = { 0, };
+	int totalAlphabetFlag[MAX_ALPHABET] = { 0, };
 };

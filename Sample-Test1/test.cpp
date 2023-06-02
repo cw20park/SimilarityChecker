@@ -50,3 +50,7 @@ TEST_F(SimilarityCheckerFixture, diffAlphabetCount3) {
 
 	EXPECT_EQ(20, similarityChecker.checkSameAlphabetCount("AA", "AAE"));
 }
+TEST_F(SimilarityCheckerFixture, smallLetter) {
+
+	EXPECT_EQ(0, similarityChecker.checkSameAlphabetCount("small", "letter"));
+}
