@@ -1,5 +1,0 @@
-class SimilarityChecker
-{
-public:
-
-};
