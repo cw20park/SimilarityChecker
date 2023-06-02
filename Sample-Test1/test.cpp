@@ -34,3 +34,23 @@ TEST_F(SimilarityCheckerFixture, noString) {
 
 	EXPECT_EQ(0, similarityChecker.checkLength("", "AAA"));
 }
+TEST_F(SimilarityCheckerFixture, sameAlphabetCount) {
+
+	EXPECT_EQ(40, similarityChecker.checkSameAlphabetCount("ASD", "DSA"));
+}
+TEST_F(SimilarityCheckerFixture, diffAlphabetCount1) {
+
+	EXPECT_EQ(0, similarityChecker.checkSameAlphabetCount("A", "BB"));
+}
+TEST_F(SimilarityCheckerFixture, diffAlphabetCount2) {
+
+	EXPECT_EQ(40, similarityChecker.checkSameAlphabetCount("AAABB", "BA"));
+}
+TEST_F(SimilarityCheckerFixture, diffAlphabetCount3) {
+
+	EXPECT_EQ(20, similarityChecker.checkSameAlphabetCount("AA", "AAE"));
+}
+TEST_F(SimilarityCheckerFixture, smallLetter) {
+
+	EXPECT_EQ(0, similarityChecker.checkSameAlphabetCount("small", "letter"));
+}
